@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body>
+<a href="/workzoneAdmin">Возрват на рабочую область</a><br>
+<h1>Список команд</h1>
+<a href="/addComand">Создать команду</a>
+<a href="/deleteComand">Удалить команду</a>
+<div th:each="el : ${comands}">
+    <h3 th:text="${el.getID()}"></h3>
+    <p th:text="${el.getNameCommand()}"></p>
+    <p th:text="${el.getID_projects()}"></p>
+    <p th:text="${el.getID_users()}"></p>
+    <p th:text="${el.getID_kurator()}"></p>
+    <p th:text="${el.getID_manager()}"></p>
+    <p th:text="${el.getID_customer()}"></p>
+    <!--<button class="w-100 btn btn-lg btn-primary" href="/someComands" name="IDcomand" th:value="${el.getID()}" type="submit">Посмотреть отчетность</button>-->
+    <a th:href="'/someComands/' + ${el.getID()}">Посмотреть отчетность</a>
+</div>
+</body>
+</html>

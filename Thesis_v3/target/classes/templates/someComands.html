@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Статистика команды</title>
+    <!--Просмотр отчетности за неделю/месяц/полгода-->
+
+</head>
+<body>
+
+<h1>За неделю было выполнено задач в количестве:</h1>
+<span th:text="${weekCompleted}"/><br>
+<h1>За месяц было выполнено задач в количестве:</h1>
+<span th:text="${monthCompleted}"/><br>
+<h1>За полгода было выполнено задач в количестве:</h1>
+<span th:text="${sixMonthCompleted}"/><br>
+<h1>Список участников команды:</h1>
+<h3>Менеджер: </h3>
+<span th:text="${managerName}"></span>
+<span th:text="${managerSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${managerTelephone}"></span><br>
+<h3>Куратор</h3>
+<span th:text="${curatorName}"></span>
+<span th:text="${curatorSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${curatorTelephone}"></span><br>
+<h3>Заказчик</h3>
+<span th:text="${customerName}"></span>
+<span th:text="${customerSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${customerTelephone}"></span><br>
+<h3>Инженер-программисты</h3>
+<div th:each="el : ${users}">
+    <span th:text="${el.getName()}"></span>
+    <span th:text="${el.getSurname()}"></span><br>
+    <p>Номер телефона:</p>
+    <span th:text="${el.getTelephone()}"></span><br>
+    <br>
+</div>
+
+</body>
+</html>

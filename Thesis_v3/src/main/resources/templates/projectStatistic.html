@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика проекта</title>
+</head>
+<body>
+
+<h1>Результаты за неделю</h1>
+<!--<script src="https://www.google.com/jsapi"></script>-->
+<!--<script th:marks="${marks}">-->
+    <!--google.load("visualization","1",{packages:["corechart"]});-->
+    <!--google.setOnLoadCallback(drawChart);-->
+    <!--var marks=document.currentScript.getAttribute('marks');-->
+    <!--marks=marks.split(' ');-->
+    <!--console.log(marks);-->
+    <!--function drawChart(){-->
+        <!--var data=google.visualization.arrayToDataTable([-->
+            <!--['Дата','Количество выполненных задач'],-->
+            <!--['1', parseInt(marks[0])],-->
+            <!--['2', parseInt(marks[1])],-->
+            <!--['3', parseInt( marks[2])],-->
+            <!--['4', parseInt( marks[3])],-->
+            <!--['5', parseInt( marks[4])],-->
+            <!--['6', parseInt( marks[5])],-->
+            <!--['7', parseInt( marks[6])],-->
+            <!--['8', parseInt( marks[7])],-->
+            <!--['9', parseInt( marks[8])],-->
+            <!--['10',parseInt( marks[9])]-->
+        <!--]);-->
+        <!--var options={-->
+            <!--title: 'Title',-->
+            <!--is3D: true,-->
+            <!--pieResidueSliceLabel: 'pieResidueSliceLabel'-->
+        <!--};-->
+        <!--var chart=new google.visualization.PieChart(document.getElementById('air'));-->
+        <!--chart.draw(data,options);-->
+    <!--}-->
+<!--</script>-->
+<!--<div id="air" style="width: 500px; height: 400px;"></div>-->
+
+<script src="https://www.google.com/jsapi"></script>
+<script th:week="${week}" th:weekCompleted="${weekCompleted}">
+    google.load("visualization","1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChartWeek);
+    var week=document.currentScript.getAttribute('week');
+    var weekCompleted=document.currentScript.getAttribute('weekCompleted');
+    week=week.split(' ');
+    weekCompleted=weekCompleted.split(' ');
+    console.log(week);
+    console.log(weekCompleted);
+    function drawChartWeek(){
+        var data = google.visualization.arrayToDataTable([
+            ['Временные отметки','Выполненные задачи'],
+            [week[0],parseInt(weekCompleted[0])],
+            [week[1],parseInt(weekCompleted[1])],
+            [week[2],parseInt(weekCompleted[2])],
+            [week[3],parseInt(weekCompleted[3])],
+            [week[4],parseInt(weekCompleted[4])],
+            [week[5],parseInt(weekCompleted[5])],
+            [week[6],parseInt(weekCompleted[6])]
+        ]);
+        console.log(data);
+        var options = {
+            title: 'Продуктивность в неделю',
+            hAxis: {title: 'Неделя'},
+            vAxis: {title: 'Кол-во выполненных задач'}
+        }
+        var chart = new google.visualization.ColumnChart(document.getElementById('onWeek'));
+        chart.draw(data,options);
+    }
+</script>
+<div id="onWeek" style="width: 800px; height: 400px;"></div>
+<h1>Результаты за месяц</h1>
+<script src="https://www.google.com/jsapi"></script>
+<script th:month="${month}" th:monthCompleted="${monthCompleted}">
+    google.load("visualization","1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChartMonth);
+    var month=document.currentScript.getAttribute('month');
+    var monthCompleted=document.currentScript.getAttribute('monthCompleted');
+    month=month.split(' ');
+    monthCompleted=monthCompleted.split(' ');
+    console.log(month);
+    console.log(monthCompleted);
+    function drawChartMonth(){
+        // var data = new Array();
+        // var dataBuf = new Array();
+        // for(var i=0; i<30;i++){
+        //     dataBuf[dataBuf.length] = [month[i],parseInt(monthCompleted[i])];
+        // };
+        // data = google.visualization.arrayToDataTable([
+        //     ['Временные отметки','Выполненные задачи'],
+        //     dataBuf
+        // ]);
+        var data = google.visualization.arrayToDataTable([
+            ['Временные отметки','Выполненные задачи'],
+            [month[0],parseInt(monthCompleted[0])],
+            [month[1],parseInt(monthCompleted[1])],
+            [month[2],parseInt(monthCompleted[2])],
+            [month[3],parseInt(monthCompleted[3])],
+            [month[4],parseInt(monthCompleted[4])],
+            [month[5],parseInt(monthCompleted[5])],
+            [month[6],parseInt(monthCompleted[6])],
+            [month[7],parseInt(monthCompleted[7])],
+            [month[8],parseInt(monthCompleted[8])],
+            [month[9],parseInt(monthCompleted[9])],
+            [month[10],parseInt(monthCompleted[10])],
+            [month[11],parseInt(monthCompleted[11])],
+            [month[12],parseInt(monthCompleted[12])],
+            [month[13],parseInt(monthCompleted[13])],
+            [month[14],parseInt(monthCompleted[14])],
+            [month[15],parseInt(monthCompleted[15])],
+            [month[16],parseInt(monthCompleted[16])],
+            [month[17],parseInt(monthCompleted[17])],
+            [month[18],parseInt(monthCompleted[18])],
+            [month[19],parseInt(monthCompleted[19])],
+            [month[20],parseInt(monthCompleted[20])],
+            [month[21],parseInt(monthCompleted[21])],
+            [month[22],parseInt(monthCompleted[22])],
+            [month[23],parseInt(monthCompleted[23])],
+            [month[24],parseInt(monthCompleted[24])],
+            [month[25],parseInt(monthCompleted[25])],
+            [month[26],parseInt(monthCompleted[26])],
+            [month[27],parseInt(monthCompleted[27])],
+            [month[28],parseInt(monthCompleted[28])],
+            [month[29],parseInt(monthCompleted[29])]
+        ])
+
+
+
+        var options = {
+            title: 'Продуктивность в месяц',
+            hAxis: {title: 'Месяц'},
+            vAxis: {title: 'Кол-во выполненных задач'}
+        }
+        var chart = new google.visualization.ColumnChart(document.getElementById('onMonth'));
+        chart.draw(data,options);
+    }
+</script>
+<div id="onMonth" style="width: 800px; height: 400px;"></div>
+<h1>Результаты за полгода</h1>
+<script src="https://www.google.com/jsapi"></script>
+<script th:sixMonth="${sixMonth}" th:sixMonthCompleted="${sixMonthCompleted}">
+    google.load("visualization","1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChartSixMonth);
+    var sixMonth=document.currentScript.getAttribute('sixMonth');
+    var sixMonthCompleted=document.currentScript.getAttribute('sixMonthCompleted');
+    sixMonth=sixMonth.split(' ');
+    sixMonthCompleted=sixMonthCompleted.split(' ');
+    console.log(sixMonth);
+    console.log(sixMonthCompleted);
+    function drawChartSixMonth(){
+        // var data = new Array();
+        // data = google.visualization.arrayToDataTable([
+        //     ['Временные отметки','Выполненные задачи']
+        // ]);
+        //
+        // for(var i=0; i<180;i++){
+        //     data.push([sixMonth[i],parseInt(sixMonthCompleted[i])])
+        // };
+        var data = google.visualization.arrayToDataTable([
+            ['Временные отметки','Выполненные задачи'],
+            [sixMonth[0],parseInt(sixMonthCompleted[0])],
+            [sixMonth[1],parseInt(sixMonthCompleted[1])],
+            [sixMonth[2],parseInt(sixMonthCompleted[2])],
+            [sixMonth[3],parseInt(sixMonthCompleted[3])],
+            [sixMonth[4],parseInt(sixMonthCompleted[4])],
+            [sixMonth[5],parseInt(sixMonthCompleted[5])],
+            [sixMonth[6],parseInt(sixMonthCompleted[6])],
+            [sixMonth[7],parseInt(sixMonthCompleted[7])],
+            [sixMonth[8],parseInt(sixMonthCompleted[8])],
+            [sixMonth[9],parseInt(sixMonthCompleted[9])],
+            [sixMonth[10],parseInt(sixMonthCompleted[10])],
+            [sixMonth[11],parseInt(sixMonthCompleted[11])],
+            [sixMonth[12],parseInt(sixMonthCompleted[12])],
+            [sixMonth[13],parseInt(sixMonthCompleted[13])],
+            [sixMonth[14],parseInt(sixMonthCompleted[14])],
+            [sixMonth[15],parseInt(sixMonthCompleted[15])],
+            [sixMonth[16],parseInt(sixMonthCompleted[16])],
+            [sixMonth[17],parseInt(sixMonthCompleted[17])],
+            [sixMonth[18],parseInt(sixMonthCompleted[18])],
+            [sixMonth[19],parseInt(sixMonthCompleted[19])],
+            [sixMonth[20],parseInt(sixMonthCompleted[20])],
+            [sixMonth[21],parseInt(sixMonthCompleted[21])],
+            [sixMonth[22],parseInt(sixMonthCompleted[22])],
+            [sixMonth[23],parseInt(sixMonthCompleted[23])],
+            [sixMonth[24],parseInt(sixMonthCompleted[24])],
+            [sixMonth[25],parseInt(sixMonthCompleted[25])],
+            [sixMonth[26],parseInt(sixMonthCompleted[26])],
+            [sixMonth[27],parseInt(sixMonthCompleted[27])],
+            [sixMonth[28],parseInt(sixMonthCompleted[28])],
+            [sixMonth[29],parseInt(sixMonthCompleted[29])],
+            [sixMonth[30],parseInt(sixMonthCompleted[30])],
+            [sixMonth[31],parseInt(sixMonthCompleted[31])],
+            [sixMonth[32],parseInt(sixMonthCompleted[32])],
+            [sixMonth[33],parseInt(sixMonthCompleted[33])],
+            [sixMonth[34],parseInt(sixMonthCompleted[34])],
+            [sixMonth[35],parseInt(sixMonthCompleted[35])],
+            [sixMonth[36],parseInt(sixMonthCompleted[36])],
+            [sixMonth[37],parseInt(sixMonthCompleted[37])],
+            [sixMonth[38],parseInt(sixMonthCompleted[38])],
+            [sixMonth[39],parseInt(sixMonthCompleted[39])],
+            [sixMonth[40],parseInt(sixMonthCompleted[40])],
+            [sixMonth[41],parseInt(sixMonthCompleted[41])],
+            [sixMonth[42],parseInt(sixMonthCompleted[42])],
+            [sixMonth[43],parseInt(sixMonthCompleted[43])],
+            [sixMonth[44],parseInt(sixMonthCompleted[44])],
+            [sixMonth[45],parseInt(sixMonthCompleted[45])],
+            [sixMonth[46],parseInt(sixMonthCompleted[46])],
+            [sixMonth[47],parseInt(sixMonthCompleted[47])],
+            [sixMonth[48],parseInt(sixMonthCompleted[48])],
+            [sixMonth[49],parseInt(sixMonthCompleted[49])],
+            [sixMonth[50],parseInt(sixMonthCompleted[50])],
+            [sixMonth[51],parseInt(sixMonthCompleted[51])],
+            [sixMonth[52],parseInt(sixMonthCompleted[52])],
+            [sixMonth[53],parseInt(sixMonthCompleted[53])],
+            [sixMonth[54],parseInt(sixMonthCompleted[54])],
+            [sixMonth[55],parseInt(sixMonthCompleted[55])],
+            [sixMonth[56],parseInt(sixMonthCompleted[56])],
+            [sixMonth[57],parseInt(sixMonthCompleted[57])],
+            [sixMonth[58],parseInt(sixMonthCompleted[58])],
+            [sixMonth[59],parseInt(sixMonthCompleted[59])],
+            [sixMonth[60],parseInt(sixMonthCompleted[60])],
+            [sixMonth[61],parseInt(sixMonthCompleted[61])],
+            [sixMonth[62],parseInt(sixMonthCompleted[62])],
+            [sixMonth[63],parseInt(sixMonthCompleted[63])],
+            [sixMonth[64],parseInt(sixMonthCompleted[64])],
+            [sixMonth[65],parseInt(sixMonthCompleted[65])],
+            [sixMonth[66],parseInt(sixMonthCompleted[66])],
+            [sixMonth[67],parseInt(sixMonthCompleted[67])],
+            [sixMonth[68],parseInt(sixMonthCompleted[68])],
+            [sixMonth[69],parseInt(sixMonthCompleted[69])],
+            [sixMonth[70],parseInt(sixMonthCompleted[70])],
+            [sixMonth[71],parseInt(sixMonthCompleted[71])],
+            [sixMonth[72],parseInt(sixMonthCompleted[72])],
+            [sixMonth[73],parseInt(sixMonthCompleted[73])],
+            [sixMonth[74],parseInt(sixMonthCompleted[74])],
+            [sixMonth[75],parseInt(sixMonthCompleted[75])],
+            [sixMonth[76],parseInt(sixMonthCompleted[76])],
+            [sixMonth[77],parseInt(sixMonthCompleted[77])],
+            [sixMonth[78],parseInt(sixMonthCompleted[78])],
+            [sixMonth[79],parseInt(sixMonthCompleted[79])],
+            [sixMonth[80],parseInt(sixMonthCompleted[80])],
+            [sixMonth[81],parseInt(sixMonthCompleted[81])],
+            [sixMonth[82],parseInt(sixMonthCompleted[82])],
+            [sixMonth[83],parseInt(sixMonthCompleted[83])],
+            [sixMonth[84],parseInt(sixMonthCompleted[84])],
+            [sixMonth[85],parseInt(sixMonthCompleted[85])],
+            [sixMonth[86],parseInt(sixMonthCompleted[86])],
+            [sixMonth[87],parseInt(sixMonthCompleted[87])],
+            [sixMonth[88],parseInt(sixMonthCompleted[88])],
+            [sixMonth[89],parseInt(sixMonthCompleted[89])],
+            [sixMonth[90],parseInt(sixMonthCompleted[90])],
+            [sixMonth[91],parseInt(sixMonthCompleted[91])],
+            [sixMonth[92],parseInt(sixMonthCompleted[92])],
+            [sixMonth[93],parseInt(sixMonthCompleted[93])],
+            [sixMonth[94],parseInt(sixMonthCompleted[94])],
+            [sixMonth[95],parseInt(sixMonthCompleted[95])],
+            [sixMonth[96],parseInt(sixMonthCompleted[96])],
+            [sixMonth[97],parseInt(sixMonthCompleted[97])],
+            [sixMonth[98],parseInt(sixMonthCompleted[98])],
+            [sixMonth[99],parseInt(sixMonthCompleted[99])],
+            [sixMonth[100],parseInt(sixMonthCompleted[100])],
+            [sixMonth[101],parseInt(sixMonthCompleted[101])],
+            [sixMonth[102],parseInt(sixMonthCompleted[102])],
+            [sixMonth[103],parseInt(sixMonthCompleted[103])],
+            [sixMonth[104],parseInt(sixMonthCompleted[104])],
+            [sixMonth[105],parseInt(sixMonthCompleted[105])],
+            [sixMonth[106],parseInt(sixMonthCompleted[106])],
+            [sixMonth[107],parseInt(sixMonthCompleted[107])],
+            [sixMonth[108],parseInt(sixMonthCompleted[108])],
+            [sixMonth[109],parseInt(sixMonthCompleted[109])],
+            [sixMonth[110],parseInt(sixMonthCompleted[110])],
+            [sixMonth[111],parseInt(sixMonthCompleted[111])],
+            [sixMonth[112],parseInt(sixMonthCompleted[112])],
+            [sixMonth[113],parseInt(sixMonthCompleted[113])],
+            [sixMonth[114],parseInt(sixMonthCompleted[114])],
+            [sixMonth[115],parseInt(sixMonthCompleted[115])],
+            [sixMonth[116],parseInt(sixMonthCompleted[116])],
+            [sixMonth[117],parseInt(sixMonthCompleted[117])],
+            [sixMonth[118],parseInt(sixMonthCompleted[118])],
+            [sixMonth[119],parseInt(sixMonthCompleted[119])],
+            [sixMonth[120],parseInt(sixMonthCompleted[120])],
+            [sixMonth[121],parseInt(sixMonthCompleted[121])],
+            [sixMonth[122],parseInt(sixMonthCompleted[122])],
+            [sixMonth[123],parseInt(sixMonthCompleted[123])],
+            [sixMonth[124],parseInt(sixMonthCompleted[124])],
+            [sixMonth[125],parseInt(sixMonthCompleted[125])],
+            [sixMonth[126],parseInt(sixMonthCompleted[126])],
+            [sixMonth[127],parseInt(sixMonthCompleted[127])],
+            [sixMonth[128],parseInt(sixMonthCompleted[128])],
+            [sixMonth[129],parseInt(sixMonthCompleted[129])],
+            [sixMonth[130],parseInt(sixMonthCompleted[130])],
+            [sixMonth[131],parseInt(sixMonthCompleted[131])],
+            [sixMonth[132],parseInt(sixMonthCompleted[132])],
+            [sixMonth[133],parseInt(sixMonthCompleted[133])],
+            [sixMonth[134],parseInt(sixMonthCompleted[134])],
+            [sixMonth[135],parseInt(sixMonthCompleted[135])],
+            [sixMonth[136],parseInt(sixMonthCompleted[136])],
+            [sixMonth[137],parseInt(sixMonthCompleted[137])],
+            [sixMonth[138],parseInt(sixMonthCompleted[138])],
+            [sixMonth[139],parseInt(sixMonthCompleted[139])],
+            [sixMonth[140],parseInt(sixMonthCompleted[140])],
+            [sixMonth[141],parseInt(sixMonthCompleted[141])],
+            [sixMonth[142],parseInt(sixMonthCompleted[142])],
+            [sixMonth[143],parseInt(sixMonthCompleted[143])],
+            [sixMonth[144],parseInt(sixMonthCompleted[144])],
+            [sixMonth[145],parseInt(sixMonthCompleted[145])],
+            [sixMonth[146],parseInt(sixMonthCompleted[146])],
+            [sixMonth[147],parseInt(sixMonthCompleted[147])],
+            [sixMonth[148],parseInt(sixMonthCompleted[148])],
+            [sixMonth[149],parseInt(sixMonthCompleted[149])],
+            [sixMonth[150],parseInt(sixMonthCompleted[150])],
+            [sixMonth[151],parseInt(sixMonthCompleted[151])],
+            [sixMonth[152],parseInt(sixMonthCompleted[152])],
+            [sixMonth[153],parseInt(sixMonthCompleted[153])],
+            [sixMonth[154],parseInt(sixMonthCompleted[154])],
+            [sixMonth[155],parseInt(sixMonthCompleted[155])],
+            [sixMonth[156],parseInt(sixMonthCompleted[156])],
+            [sixMonth[157],parseInt(sixMonthCompleted[157])],
+            [sixMonth[158],parseInt(sixMonthCompleted[158])],
+            [sixMonth[159],parseInt(sixMonthCompleted[159])],
+            [sixMonth[160],parseInt(sixMonthCompleted[160])],
+            [sixMonth[161],parseInt(sixMonthCompleted[161])],
+            [sixMonth[162],parseInt(sixMonthCompleted[162])],
+            [sixMonth[163],parseInt(sixMonthCompleted[163])],
+            [sixMonth[164],parseInt(sixMonthCompleted[164])],
+            [sixMonth[165],parseInt(sixMonthCompleted[165])],
+            [sixMonth[166],parseInt(sixMonthCompleted[166])],
+            [sixMonth[167],parseInt(sixMonthCompleted[167])],
+            [sixMonth[168],parseInt(sixMonthCompleted[168])],
+            [sixMonth[169],parseInt(sixMonthCompleted[169])],
+            [sixMonth[170],parseInt(sixMonthCompleted[170])],
+            [sixMonth[171],parseInt(sixMonthCompleted[171])],
+            [sixMonth[172],parseInt(sixMonthCompleted[172])],
+            [sixMonth[173],parseInt(sixMonthCompleted[173])],
+            [sixMonth[174],parseInt(sixMonthCompleted[174])],
+            [sixMonth[175],parseInt(sixMonthCompleted[175])],
+            [sixMonth[176],parseInt(sixMonthCompleted[176])],
+            [sixMonth[177],parseInt(sixMonthCompleted[177])],
+            [sixMonth[178],parseInt(sixMonthCompleted[178])],
+            [sixMonth[179],parseInt(sixMonthCompleted[179])],
+        ])
+        var options = {
+            title: 'Продуктивность в месяц',
+            hAxis: {title: 'Полгода'},
+            vAxis: {title: 'Кол-во выполненных задач'}
+        }
+        var chart = new google.visualization.ColumnChart(document.getElementById('onSixMonth'));
+        chart.draw(data,options);
+    }
+</script>
+<div id="onSixMonth" style="width: 1300px; height: 400px;"></div>
+</body>
+</html>
+
+
+<!--<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="740" height="312" style="display: block; width: 740px; height: 312px;"></canvas>-->

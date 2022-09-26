@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body>
+
+<p class="mt-5 mb-3 text-muted">© 2022</p>
+<h1>Список пользователей</h1>
+
+<div th:each="elU : ${users}">
+
+
+    <form action="/listuser" method="post">
+
+        <h4 class="h3 mb-3 fw-normal" name = "ID" th:value ="${elU.getID()}" th:text="'ID пользователя: '+${elU.getID()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name="login" th:value="${elU.getLogin()}" th:text="'Логин пользов.: '+${elU.getLogin()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "name" th:value ="${elU.getName()}" th:text="'Имя пользов.: '+${elU.getName()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "surname" th:value ="${elU.getSurname()}" th:text="'Фамилия пользов.: '+${elU.getSurname()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "telephone" th:value ="${elU.getTelephone()}" th:text="'Номер телефона пользов.: '+${elU.getTelephone()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "email" th:value ="${elU.getEmail()}" th:text="'Email пользов.: '+${elU.getEmail()}"></h4>
+
+        <input type="checkbox" name ="verUs" th:value="${elU.getLogin()}" th:text="Разблокирован" th:checked="${elU.getIsActived()}"/><br>
+        <input type="checkbox" name ="actUs" th:value="${elU.getLogin()}" th:text="Администратор" th:checked="${elU.getIsAdmin()}"/><br>
+        <input type="checkbox" name ="confirmUs" th:value="${elU.getLogin()}" th:text="Подтвердить" /><br>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submitUsers">Сохранить</button>
+
+    </form>
+</div>
+
+<h1>Список кураторов</h1>
+
+<div th:each="elCur : ${curators}">
+
+
+    <form action="/listuser" method="post">
+
+        <h4 class="h3 mb-3 fw-normal" name = "ID" th:value ="${elCur.getID()}" th:text="'ID куратора: '+${elCur.getID()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name="login" th:value="${elCur.getLogin()}" th:text="'Логин куратора: '+${elCur.getLogin()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "name" th:value ="${elCur.getName()}" th:text="'Имя куратора: '+${elCur.getName()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "surname" th:value ="${elCur.getSurname()}" th:text="'Фамилия куратора: '+${elCur.getSurname()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "telephone" th:value ="${elCur.getTelephone()}" th:text="'Номер телефона куратора: '+${elCur.getTelephone()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "email" th:value ="${elCur.getEmail()}" th:text="'Email куратора: '+${elCur.getEmail()}"></h4>
+
+        <input type="checkbox" name ="verCur" th:value="${elCur.getLogin()}" th:text="Разблокирован" th:checked="${elCur.getIsActived()}"/><br>
+        <input type="checkbox" name ="actCur" th:value="${elCur.getLogin()}" th:text="Администратор" th:checked="${elCur.getIsAdmin()}"/><br>
+        <input type="checkbox" name ="confirmCur" th:value="${elCur.getLogin()}" th:text="Подтвердить" /><br>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submitCurstors">Сохранить</button>
+
+    </form>
+</div>
+
+<h1>Список заказчиков</h1>
+
+<div th:each="elCus : ${customers}">
+
+
+    <form action="/listuser" method="post">
+
+        <h4 class="h3 mb-3 fw-normal" name = "ID" th:value ="${elCus.getID()}" th:text="'ID заказчика: '+${elCus.getID()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name="login" th:value="${elCus.getLogin()}" th:text="'Логин заказчика: '+${elCus.getLogin()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "name" th:value ="${elCus.getName()}" th:text="'Имя заказчика: '+${elCus.getName()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "surname" th:value ="${elCus.getSurname()}" th:text="'Фамилия заказчика: '+${elCus.getSurname()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "telephone" th:value ="${elCus.getTelephone()}" th:text="'Номер телефона заказчика: '+${elCus.getTelephone()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "email" th:value ="${elCus.getEmail()}" th:text="'Email заказчика: '+${elCus.getEmail()}"></h4>
+
+        <input type="checkbox" name ="verCus" th:value="${elCus.getLogin()}" th:text="Разблокирован" th:checked="${elCus.getIsActived()}"/><br>
+        <input type="checkbox" name ="actCus" th:value="${elCus.getLogin()}" th:text="Администратор" th:checked="${elCus.getIsAdmin()}"/><br>
+        <input type="checkbox" name ="confirmCus" th:value="${elCus.getLogin()}" th:text="Подтвердить" /><br>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submitCustomers">Сохранить</button>
+
+    </form>
+</div>
+
+<h1>Список менеджеров</h1>
+
+<div th:each="elM : ${managers}">
+
+
+    <form action="/listuser" method="post">
+
+        <h4 class="h3 mb-3 fw-normal" name = "ID" th:value ="${elM.getID()}" th:text="'ID менеджера'+${elM.getID()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name="login" th:value="${elM.getLogin()}" th:text="'Логин менеджера'+${elM.getLogin()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "name" th:value ="${elM.getName()}" th:text="'Имя менеджера'+${elM.getName()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "surname" th:value ="${elM.getSurname()}" th:text="'Фамилия менеджера'+${elM.getSurname()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "telephone" th:value ="${elM.getTelephone()}" th:text="'Номер телефона менеджера: '+${elM.getTelephone()}"></h4>
+        <h4 class="h3 mb-3 fw-normal" name = "email" th:value ="${elM.getEmail()}" th:text="'Email менеджера: '+${elM.getEmail()}"></h4>
+
+        <input type="checkbox" name ="verMan" th:value="${elM.getLogin()}" th:text="Разблокирован" th:checked="${elM.getIsActived()}"/><br>
+        <input type="checkbox" name ="actMan" th:value="${elM.getLogin()}" th:text="Администратор" th:checked="${elM.getIsAdmin()}"/><br>
+        <input type="checkbox" name ="confirmMan" th:value="${elM.getLogin()}" th:text="Подтвердить" /><br>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submitManagers">Сохранить</button>
+
+    </form>
+</div>
+
+</body>
+</html>

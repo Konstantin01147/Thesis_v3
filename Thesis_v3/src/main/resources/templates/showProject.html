@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Просмотр проекта</title>
+
+
+</head>
+<body>
+
+<h1>Список задач:</h1>
+<div th:each="el : ${tasks}">
+    <form action="/showProject" method="post">
+    <p class="h3 mb-3 fw-normal" name = "ID" th:value ="${el.getID()}" th:text="'ID задачи: '+${el.getID()}"></p>
+    <p class="h3 mb-3 fw-normal" name="Name" th:value="${el.getName()}" th:text="'Название задачи: '+${el.getName()}"></p>
+    <p class="h3 mb-3 fw-normal" name = "start" th:value ="${el.getStartDate()}" th:text="'Дата начала задачи: '+${el.getStartDate()}"></p>
+    <p class="h3 mb-3 fw-normal" name = "finish" th:value ="${el.getFinishDate()}" th:text="'Крайний срок выполнения: '+${el.getFinishDate()}"></p>
+
+    <h4 class="h3 mb-3 fw-normal" name = "completed" th:value ="${el.getCompleted()}" th:text="'(0 - невыполнена, 1 - выполнена) '+${el.getCompleted()}"></h4>
+    <!--<form action="'/showProject/' + ${el.getID()}" method="post">-->
+        <!--<button class="w-100 btn btn-lg btn-primary" name="IDtask" th:value="${el.getID()}" type="submit">Отметить как выполненное</button>-->
+    <!--</form>-->
+    <input type="checkbox" name ="confirm" th:value="${el.getID()}" th:text="Выполненно" th:checked="${el.getCompleted()}"/><br>
+    <button class="w-100 btn btn-lg btn-primary" type="submitManagers">Подтвердить</button>
+    </form>
+
+</div>
+
+<h1>За неделю в рамках проекта было выполнено задач в количестве:</h1>
+<span th:text="${weekCompleted}"/><br>
+<h1>За месяц:</h1>
+<span th:text="${monthCompleted}"/><br>
+<h1>За полгода:</h1>
+<span th:text="${sixMonthCompleted}"/><br>
+<h1>Список участников команды:</h1>
+<h3>Менеджер: </h3>
+<span th:text="${managerName}"></span>
+<span th:text="${managerSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${managerTelephone}"></span><br>
+<h3>Куратор:</h3>
+<span th:text="${curatorName}"></span>
+<span th:text="${curatorSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${curatorTelephone}"></span><br>
+<h3>Заказчик</h3>
+<span th:text="${customerName}"></span>
+<span th:text="${customerSurname}"></span><br>
+<p>Номер телефона:</p>
+<span th:text="${customerTelephone}"></span><br>
+<h3>Инженер-программисты</h3>
+<div th:each="el : ${users}">
+    <span th:text="${el.getName()}"></span>
+    <span th:text="${el.getSurname()}"></span><br>
+    <p>Номер телефона:</p>
+    <span th:text="${el.getTelephone()}"></span><br>
+    <br>
+</div>
+
+</body>
+</html>

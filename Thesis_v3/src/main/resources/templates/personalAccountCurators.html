@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+Куратор <span th:text="${name}"/> <span th:text="${surname}"/> <br>
+<span th:text="${login}"/> <br>
+<span th:text="${email}"/> <br>
+<span th:text="${telephone}"/> <br>
+<span th:text="${surname}"/> <br>
+<span th:text="${surname}"/> <br>
+<a th:if="${isadmin}">У вас имеются права администратора</a>
+<a th:if="${!isadmin}">У вас нет прав администратора</a>
+
+<div>
+
+    <h3 th:text="${command.getID()}"></h3>
+    <p th:text="${command.getNameCommand()}"></p>
+    <a href="/someComands">Подробнее</a>
+</div>
+
+<a></a>
+</body>
+</html>

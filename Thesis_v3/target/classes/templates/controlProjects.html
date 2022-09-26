@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body >
+
+<h1>Список проектов</h1>
+<a href="/addProject">Создать проект</a><br>
+<a href="/deleteProject">Удалить проект</a><br>
+<a href="/addTask">Создать новую задачу</a>
+<a href="/deleteTask">Удалить задачу</a>
+<div th:each="el : ${projects}" class="alert alert-info mt-2">
+    <h3 th:text="'ID проекта: '+${el.getID()}"></h3>
+    <p th:text="'Название проекта: '+${el.getName()}"></p>
+    <!--<p th:text="${el.getID_tasks()}"></p>-->
+    <a th:href="'/showProject/' + ${el.getID()}" class="btn btn-warning">Просмотр</a>
+    <!--<button class="w-100 btn btn-lg btn-primary" href="/showProject" name="IDproj" th:value="${el.getID()}" type="submit">Просмотр</button>-->
+    <!--<button class="w-100 btn btn-lg btn-primary" href="/taskToProject" name="IDproj" th:value="${el.getID()}" type="submit">Добавить задачу в проект</button>-->
+    <a th:href="'/taskToProject/' + ${el.getID()}" class="btn btn-warning">Добавить задачу в проект</a>
+
+
+</div>
+
+</body>
+</html>
